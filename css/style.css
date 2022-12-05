@@ -1,0 +1,44 @@
+body {
+    margin: 0 auto;
+    /*background-image: url(https://source.unsplash.com/1600x900/?landscape);*/
+   background-image: url(/fotos/3d.jpg);
+   background-size: cover;
+   background-repeat: none;
+   font-family: 'Roboto Mono', monospace;
+}
+
+
+.head {
+    display: block;
+    text-align: center;
+    background: #000000d0; /*transparente*/
+    color: white;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    justify-items: center;
+    margin-top: 10px;
+}
+
+
+.card {
+    display: grid;
+    justify-items: center;
+    background: #000000d0; /*transparente*/
+    color: white;
+    padding: 2em; 
+    border-radius: 30px;
+    width: 70%;  
+    /*max-width: 420px;  */
+    margin: 1em;
+}
+
+.boton {
+    cursor: pointer;
+    transition: 2.5seg;
+}
