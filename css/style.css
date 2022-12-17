@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     /*background-image: url(https://source.unsplash.com/1600x900/?landscape);*/
-   background-image: url(/fotos/3d.jpg);
+   background-image: url(/fotos/cielo.webp);
    background-size: cover;
    background-repeat: none;
    font-family: 'Roboto Mono', monospace;
@@ -38,7 +38,12 @@ body {
     margin: 1em;
 }
 
+.card p {
+    font-size: 1.2rem;
+}
+
 .boton {
+    border-radius: 10%;
     cursor: pointer;
     transition: 2.5seg;
 }
