@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>billetera</title>
+    <!--icono-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/style.css">  
+
+</head>
+<body>
+    <div class="contenedorBilletera">
+        <div class="contenidoBilletera">
+
+            <div class="subContenidoBilletera">
+                <div class="totalBilletera">
+                    <h3>Wallet</h3>
+                    <p class="ocultar error" id="walletError">El valor no puede ser nulo ni con numeros negativos</p>
+                    <input type="number" id="saldoTotal" placeholder="Ingresar saldo total">
+                    <button class="enviar" id="saldoTotalBoton">Ingresar dinero</button>
+                </div>
+                <!-- gastos usuario -->
+                <div class="totalGastos">
+                    <h3>Gastos</h3>
+                    <p class="ocultar error" id="productoError">El valor no puede ser nulo</p>
+                    <input type="text" class="productoTitulo" id="productoTitulo" placeholder="Ingresa el nombre del producto">
+                    <input type="number" class="precioProducto" id="precioProducto" placeholder="Ingresa el precio del producto">
+                    <button class="enviar" id="botonProducto">Enviar gasto</button>
+                </div>
+            </div>
+
+            <!-- resumen -->
+            <div class="flexSpace resumenContenedor">
+
+                <div>
+                    <p>Total</p>
+                    <span id="monto">0</span>
+                </div>
+
+                <div>
+                    <p>Gastos</p>
+                    <span id="gastosResumen">0</span>
+                </div>
+
+                <div>
+                    <p>Resto</p>
+                    <span id="resto">0</span>
+                </div>
+            </div>
+
+            <!-- lista -->
+            <div class="lista">
+                <h3>Resumen lista</h3>
+                <div class="listaContenido" id="lista"></div>
+            </div>
+
+
+        </div>
+    </div>
+
+<script src="/js/scriptWallet.js"></script>
+</body>
+</html>
