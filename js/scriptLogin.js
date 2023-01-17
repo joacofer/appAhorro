@@ -14,21 +14,17 @@ function guardar (valor){
         parrafo.innerText = "Los campos no deben estar vacios";
         return;
     } else {
-        if (valor === "sesionStorage") {
-            sessionStorage.setItem("item", JSON.stringify(user));
-        }
-        if (valor === "localStorage") {
-            localStorage.setItem("item", JSON.stringify(user));
-        }
+        valor === "localStorage" && localStorage.setItem("item", JSON.stringify(user));
+        
+        valor === "sesionStorage"  && sessionStorage.setItem("item", JSON.stringify(user));
     }
     return user;
 }
 
+
+
+
 enviar.addEventListener("click", (e)=>{
     e.preventDefault();
-    if (check.checked){
-        guardar("localStorage")
-    }else {
-        guardar("sesionStorage")
-    }
+    check.checked ? guardar("localStorage") : guardar("sesionStorage");
 });

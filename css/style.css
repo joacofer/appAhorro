@@ -293,7 +293,11 @@ footer {
     padding: 1.8em 1.2em;
     box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.30);
     border-radius: 0.6em;
+}
 
+h3.resumenTitulo {
+    display: flex;
+    justify-content: center;
 }
 
 .ocultar {
@@ -303,4 +307,9 @@ footer {
 .error {
     color: red;
     font-size: 10px;
+}
+
+.subLista {
+    display: flex;
+    justify-content: space-around;
 }
