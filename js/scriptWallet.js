@@ -47,8 +47,6 @@ saldoTotalBoton.addEventListener("click", ()=> {
 })
 
 
-
-
 //funcion para deshabilitar boton de eliminar o editar:
 const deshabilitarBoton = (bool) => {
     let editarBoton = document.getElementsByClassName("edit");
@@ -56,67 +54,6 @@ const deshabilitarBoton = (bool) => {
         el.deshabilitar = bool;
     }) ;   
 };
-
-
-
-
-
-
-//funcion para modificar los elementos de la lista
-
-const modificarElemento = (element, edit = false) => {
-
-    let parentDiv = element.parentElement;
-    let restoActual = resto.innerText;
-    let currentExpense = gastosResumen.value;
-    let parentAmount = parentDiv.querySelector(".monto").innerText;
-    
-    if (edit) {
-        let parentText = parentDiv.querySelector(".producto").innerText;
-        productoTitulo.value = parentText;
-        precioProducto.value = parentAmount;
-        deshabilitarBoton(true);
-    }
-
-    resto.innerText = parseInt(restoActual) + parseInt(parentAmount);
-    gastosResumen.innerText = parseInt(currentExpense) - parseInt(parentAmount);
-    parentDiv.remove();
-};
-
-
-
-//funcion para crear lista 
-
-const creadorLista = (expenseName, expenseValue) => {
-
-    let subLista = document.createElement("div");
-    subLista.classList.add("subLista");
-    lista.appendChild(subLista);
-    subLista.innerHTML = `<p class="product"> ${expenseName}</p><p class="monto">${expenseValue}</p>`;
-
-
-    let editButton = document.createElement("button");
-    editButton.classList.add("fa-duotone fa-pencil", "edit");
-    editButton.style.fontSize = "24px";
-    editButton.addEventListener("click", () => {
-        modificarElemento(editButton, true);
-    });
-
-    
-    let deleteButton = document.createElement("button");
-    deleteButton.classList.add("fa-sharp fa-solid fa-trash", "delete");
-    deleteButton.style.fontSize = "24px";
-    deleteButton.addEventListener("click", () =>{
-        modificarElemento (deleteButton);
-    });
-
-    subLista.appendChild(editButton);
-    subLista.appendChild(deleteButton);
-    document.getElementById("lista").appendChild(subLista);
-};
-
-
-
 
 
 //funcion para calcular resto y gasto
@@ -141,8 +78,44 @@ botonProducto.addEventListener("click", () => {
     const restoTotal = gastosTemporales - sum;
     resto.innerText = restoTotal;
 
-    //creando lista 
-    creadorLista(productoTitulo.value, precioProducto.value);
-    productoTitulo.value = "";
-    precioProducto.value = "";
+    let subLista = document.createElement("div");
+    subLista.classList.add("subLista");
+    lista.appendChild(subLista);
+    subLista.innerHTML = `<p class="product"> ${productoTitulo.value}</p><p class="monto">$${precioProducto.value}</p>`;
+
+
+    let deleteButton = document.createElement("button");
+    deleteButton.className = "editButton";
+    deleteButton.innerHTML = 
+    `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-backspace" width="35" height="30" viewBox="0 0 24 24"   
+     stroke-width="1.5" stroke="#6f32be" fill="none" stroke-linecap="round" stroke-linejoin="round">
+     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+     <path d="M20 6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-11l-5 -5a1.5 1.5 0 0 1 0 -2l5 -5z" />
+     <path d="M12 10l4 4m0 -4l-4 4" />
+     </svg>`
+    deleteButton.addEventListener("click", () => {
+        gastosResumen.innerText = parseInt(gastosResumen.innerText) - expedienture;
+        resto.innerText = restoTotal + expedienture;
+        subLista.remove();
+
+    });
+    subLista.appendChild(deleteButton);
+    document.getElementById("lista").appendChild(subLista);
 });
+
+
+//consumiendo api con fetch
+const apiBanco = document.getElementById("apiBanco");
+let tiposDeDolares = [];
+//fetch bcra
+fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+.then((response) => response.json())
+.then((data) => {
+     apiBanco.innerHTML = `
+        <h2 class="tituloDolar">Dolar Oficial</h2>
+        <p class="pDolar">Compra: ${data[0].casa.venta} Venta: ${data[0].casa.compra}</p>
+        <h2 class="tituloDolar">Dolar Blue</h2>
+        <p class="pDolar">Compra: ${data[1].casa.venta} Venta: ${data[1].casa.compra}</p>`;
+});
+
+

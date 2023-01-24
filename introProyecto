@@ -1,0 +1,7 @@
+    Hola, como estas, Dani?
+
+    Entrego mi proyecto final y como fue pedido en la tercer entrega procedo a explicarlo un poco, la verdad es que quise hacer algo distinto a un ecomerce, pero termine complicándome la vida para intentar incluir todo lo pedido para la última entrega.
+
+    El proyecto inicia con una simulación de un inicio de sesión simple, la cual guarda la info en el localStorage y en el sesionStorage y agrega una librería js en el caso de no completar los campos, luego nos redirecciona a la página (ahorro) la cual ingresando el sueldo sin dar enter podemos elegir la manera en la que administra nuestro sueldo dependiendo la opción que elijamos, quiero aclarar que tuve toda la intención de usar un botón para el input, para guardar el resultado en un variable, pero cada vez que daba enter, refrescaba la página y perdía todos los datos, si tienen la solución quedo atento a cuál es. Al final de la página como un footer tenemos un botón que no dirige a la página (billetera), en la cual tenemos una billetera virtual simple y por último los datos sacados de una API del cambio del dólar oficial y el dólar Blue, intente usar la API del bcra que nos da una información al día, pero se encontraba caída, tuve que usar la alternativa que verán en el proyecto, por ende el precio del dólar no estará actualizado.
+
+    ¡Sin más que agregar, espero que con lo que hice alcance para aprobar y de no ser así quedo atento a las correcciones, muchas gracias por todo Joaquin Fernandez! 

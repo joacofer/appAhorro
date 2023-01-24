@@ -11,7 +11,12 @@ function guardar (valor){
         usuario: usuario.value,
         password: pass.value};
     if (user.usuario == "" || user.pass == ""){
-        parrafo.innerText = "Los campos no deben estar vacios";
+        Swal.fire({
+            icon: 'error',
+            title: 'Uep...',
+            text: 'Los campos no pueden estar vacios!',
+          })
+        // parrafo.innerText = "Los campos no deben estar vacios";
         return;
     } else {
         valor === "localStorage" && localStorage.setItem("item", JSON.stringify(user));
@@ -22,9 +27,12 @@ function guardar (valor){
 }
 
 
-
-
 enviar.addEventListener("click", (e)=>{
     e.preventDefault();
     check.checked ? guardar("localStorage") : guardar("sesionStorage");
 });
+
+function redirigir() {
+    if (guardar())
+    window.location.href="./pages/ahorro.html"
+};
